@@ -1,0 +1,28 @@
+import requests
+import time
+import random
+
+BOT_TOKEN = "PASTE_YOUR_TOKEN"
+CHAT_ID = "PASTE_YOUR_CHAT_ID"
+
+pairs = ["EUR/USD OTC", "GBP/JPY OTC", "USD/JPY OTC"]
+
+def send(msg):
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    requests.post(url, data={"chat_id": CHAT_ID, "text": msg})
+
+while True:
+    pair = random.choice(pairs)
+
+    message = f"""
+🔥 Peace Rich Alpha Signals Pro
+
+PAIR: {pair}
+TIMEFRAME: 1M / 5M OTC
+ACTION: BUY 📈 / SELL 📉
+
+⚠️ Risk 1-2%
+"""
+
+    send(message)
+    time.sleep(300)
